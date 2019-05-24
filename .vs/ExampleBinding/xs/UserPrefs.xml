@@ -1,0 +1,25 @@
+﻿<Properties>
+  <MonoDevelop.Ide.ItemProperties.ExampleBinding FirstBuild="True" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="../../Downloads/youtube-ios-player-helper-master/Classes/YTPlayerView.h">
+    <Files>
+      <File FileName="ExampleBinding/ApiDefinition.cs" Line="69" Column="1" />
+      <File FileName="ExampleBinding/Structs.cs" Line="1" Column="1" />
+      <File FileName="../../Downloads/youtube-ios-player-helper-master/Classes/YTPlayerView.h" Line="20" Column="39" NotebookId="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="ExampleBinding" expanded="True">
+            <Node name="ExampleBinding" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
