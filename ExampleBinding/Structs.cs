@@ -3,7 +3,7 @@
 namespace NativeLibrary
 {
 
-    [Native] // needed for enums defined as NSInteger in ObjC
+    //[Native] // needed for enums defined as NSInteger in ObjC
     enum YTPlayerState {
         kYTPlayerStateUnstarted,
         kYTPlayerStateEnded,
@@ -14,7 +14,7 @@ namespace NativeLibrary
         kYTPlayerStateUnknown
     }
 
-    [Native] // needed for enums defined as NSInteger in ObjC
+    //[Native] // needed for enums defined as NSInteger in ObjC
     enum YTPlaybackQuality
     {
         kYTPlaybackQualitySmall,
@@ -28,7 +28,7 @@ namespace NativeLibrary
         kYTPlaybackQualityUnknown /** This should never be returned. It is here for future proofing. */
     }
 
-    [Native] // needed for enums defined as NSInteger in ObjC
+    //[Native] // needed for enums defined as NSInteger in ObjC
     enum YTPlayerError
     {
         kYTPlayerErrorInvalidParam,

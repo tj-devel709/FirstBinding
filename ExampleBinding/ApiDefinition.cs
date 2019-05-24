@@ -98,7 +98,7 @@ namespace NativeLibrary
     }
 
 
-    [BaseType(typeof(UIView<UIWebViewDelegate>))]
+    [BaseType(typeof(UIWebViewDelegate))]
     interface YTPlayerView {
         [Export ("webView")]
         IntPtr WebView { get; }
@@ -106,19 +106,19 @@ namespace NativeLibrary
         [Export("delegate")]
         YTPlayerViewDelegate Delegate { get; set; }
 
-        Export("loadWithVideoId:")]
+        [Export("loadWithVideoId:")]
         bool LoadWithVideoId (IntPtr videoId);
 
-        Export("loadWithPlaylistId:")]
+        [Export("loadWithPlaylistId:")]
         bool LoadWithPlaylistId (IntPtr playlistId);
 
-        Export("loadWithVideoId:playerVars:")]
+        [Export("loadWithVideoId:playerVars:")]
         bool LoadWithVideoIdPlayerVars (IntPtr videoId, IntPtr playerVars);
 
-        Export("loadWithPlaylistId:playerVars:")]
+        [Export("loadWithPlaylistId:playerVars:")]
         bool LoadWithPlaylistIdPlayerVars (IntPtr playlistId, IntPtr playerVars);
 
-        Export("loadWithPlayerParams:")]
+        [Export("loadWithPlayerParams:")]
         bool LoadWithPlayerParams (IntPtr additionalPlayerParams);
 
         [Export("playVideo")]
@@ -130,43 +130,43 @@ namespace NativeLibrary
         [Export("stopVideo")]
         void StopVideo ();
 
-        Export("seekToSeconds:allowSeekAhead:")]
+        [Export("seekToSeconds:allowSeekAhead:")]
         void SeekToSecondsAllowSeekAhead (float seekToSeconds, bool allowSeekAhead);
 
-        Export("cueVideoById:startSeconds:suggestedQuality:")]
+        [Export("cueVideoById:startSeconds:suggestedQuality:")]
         void CueVideoByIdStartSecondsSuggestedQuality (IntPtr videoId, float startSeconds, YTPlaybackQuality suggestedQuality);
 
-        Export("cueVideoById:startSeconds:endSeconds:suggestedQuality:")]
+        [Export("cueVideoById:startSeconds:endSeconds:suggestedQuality:")]
         void CueVideoByIdStartSecondsEndSecondsSuggestedQuality (IntPtr videoId, float startSeconds, float endSeconds, YTPlaybackQuality suggestedQuality);
 
-        Export("loadVideoById:startSeconds:suggestedQuality:")]
+        [Export("loadVideoById:startSeconds:suggestedQuality:")]
         void LoadVideoByIdStartSecondsSuggestedQuality (IntPtr videoId, float startSeconds, YTPlaybackQuality suggestedQuality);
 
-        Export("loadVideoById:startSeconds:endSeconds:suggestedQuality:")]
+        [Export("loadVideoById:startSeconds:endSeconds:suggestedQuality:")]
         void LoadVideoByIdStartSecondsEndSecondsSuggestedQuality (IntPtr videoId, float startSeconds, float endSeconds, YTPlaybackQuality suggestedQuality);
 
-        Export("cueVideoByURL:startSeconds:suggestedQuality:")]
+        [Export("cueVideoByURL:startSeconds:suggestedQuality:")]
         void CueVideoByURLStartSecondsSuggestedQuality (IntPtr videoURL, float startSeconds, YTPlaybackQuality suggestedQuality);
 
-        Export("cueVideoByURL:startSeconds:endSeconds:suggestedQuality:")]
+        [Export("cueVideoByURL:startSeconds:endSeconds:suggestedQuality:")]
         void CueVideoByURLStartSecondsEndSecondsSuggestedQuality (IntPtr videoURL, float startSeconds, float endSeconds, YTPlaybackQuality suggestedQuality);
 
-        Export("loadVideoByURL:startSeconds:suggestedQuality:")]
+        [Export("loadVideoByURL:startSeconds:suggestedQuality:")]
         void LoadVideoByURLStartSecondsSuggestedQuality (IntPtr videoURL, float startSeconds, YTPlaybackQuality suggestedQuality);
 
-        Export("loadVideoByURL:startSeconds:endSeconds:suggestedQuality:")]
+        [Export("loadVideoByURL:startSeconds:endSeconds:suggestedQuality:")]
         void LoadVideoByURLStartSecondsEndSecondsSuggestedQuality (IntPtr videoURL, float startSeconds, float endSeconds, YTPlaybackQuality suggestedQuality);
 
-        Export("cuePlaylistByPlaylistId:index:startSeconds:suggestedQuality:")]
+        [Export("cuePlaylistByPlaylistId:index:startSeconds:suggestedQuality:")]
         void CuePlaylistByPlaylistIdIndexStartSecondsSuggestedQuality (IntPtr playlistId, int index, float startSeconds, YTPlaybackQuality suggestedQuality);
 
-        Export("cuePlaylistByVideos:index:startSeconds:suggestedQuality:")]
+        [Export("cuePlaylistByVideos:index:startSeconds:suggestedQuality:")]
         void CuePlaylistByVideosIdIndexStartSecondsSuggestedQuality (IntPtr videoIds, int index, float startSeconds, YTPlaybackQuality suggestedQuality);
 
-        Export("loadPlaylistByPlaylistId:index:startSeconds:suggestedQuality:")]
+        [Export("loadPlaylistByPlaylistId:index:startSeconds:suggestedQuality:")]
         void LoadPlaylistByPlaylistIdIndexStartSecondsSuggestedQuality (IntPtr playlistId, int index, float startSeconds, YTPlaybackQuality suggestedQuality);
 
-        Export("loadPlaylistByVideos:index:startSeconds:suggestedQuality:")]
+        [Export("loadPlaylistByVideos:index:startSeconds:suggestedQuality:")]
         void LoadPlaylistByVideosIndexStartSecondsSuggestedQuality (IntPtr videoIds, int index, float startSeconds, YTPlaybackQuality suggestedQuality);
 
         [Export("nextVideo")]
@@ -212,7 +212,7 @@ namespace NativeLibrary
         IntPtr AvailableQualityLevels ();
 
         [Export("duration")]
-        NSTimeInterval Duration ();
+        double Duration ();
 
         [Export("videoUrl")]
         IntPtr VideoUrl ();
