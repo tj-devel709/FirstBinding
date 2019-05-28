@@ -71,55 +71,60 @@ namespace NativeLibrary
     // For more information, see http://docs.xamarin.com/ios/advanced_topics/binding_objective-c_types
     //
 
+    interface IYTPlayerViewDelegate { }
+
     [BaseType(typeof(NSObject))]
     [Model][Protocol]
     interface YTPlayerViewDelegate {
         [Export("playerViewDidBecomeReady:")]
-        void PlayerViewDidBecomeReady(IntPtr playerView);
+        void PlayerViewDidBecomeReady(YTPlayerView playerView);
 
         [Export("playerView:didChangeToState:")]
-        void PlayerViewDidChangeToState (IntPtr playerView, YTPlayerState state);
+        void PlayerViewDidChangeToState (YTPlayerView playerView, YTPlayerState state);
 
         [Export("playerView:didChangeToQuality:")]
-        void PlayerViewDidChangeToQuality (IntPtr playerView, YTPlaybackQuality quality);
+        void PlayerViewDidChangeToQuality (YTPlayerView playerView, YTPlaybackQuality quality);
 
         [Export("playerView:receivedError:")]
-        void PlayerViewReceivedError (IntPtr playerView, YTPlayerError error);
+        void PlayerViewReceivedError (YTPlayerView playerView, YTPlayerError error);
 
         [Export("playerView:didPlayTime:")]
-        void PlayerViewDidPlayTime (IntPtr playerView, float playTime);
+        void PlayerViewDidPlayTime (YTPlayerView playerView, float playTime);
 
         [Export("playerViewPreferredWebViewBackgroundColor:")]
-        void PlayerViewPreferredWebViewBackgroundColor(IntPtr playerView);
+        UIColor PlayerViewPreferredWebViewBackgroundColor(YTPlayerView playerView);
 
         [Export("playerViewPreferredInitialLoadingView:")]
-        UIView PlayerViewPreferredInitialLoadingView (IntPtr playerView);
-        // obj-c returns nullable UIView * 
+        UIView PlayerViewPreferredInitialLoadingView (YTPlayerView playerView);
     }
 
 
-    [BaseType(typeof(UIWebViewDelegate))]
-    interface YTPlayerView {
-        [Export ("webView")]
-        IntPtr WebView { get; }
+    [BaseType(typeof(UIView))]
+    interface YTPlayerView : IUIWebViewDelegate
+    {
+        [Export ("webView", ArgumentSemantic.Strong), NullAllowed] // wrap for strong-typed version? 
+        UIWebView WebView { get; }
 
-        [Export("delegate")]
-        YTPlayerViewDelegate Delegate { get; set; }
+        [Wrap ("WeakDelegate"), NullAllowed]
+        IYTPlayerViewDelegate Delegate { get; set; }
+
+        [Export("delegate", ArgumentSemantic.Weak), NullAllowed]
+        NSObject WeakDelegate { get; set; } // return type is id but inherits from YTPlayerViewDelegate?
 
         [Export("loadWithVideoId:")]
-        bool LoadWithVideoId (IntPtr videoId);
+        bool LoadWithVideoId (string videoId);
 
         [Export("loadWithPlaylistId:")]
-        bool LoadWithPlaylistId (IntPtr playlistId);
+        bool LoadWithPlaylistId (string playlistId);
 
         [Export("loadWithVideoId:playerVars:")]
-        bool LoadWithVideoIdPlayerVars (IntPtr videoId, IntPtr playerVars);
+        bool LoadWithVideoId (string videoId, NSDictionary playerVars);
 
         [Export("loadWithPlaylistId:playerVars:")]
-        bool LoadWithPlaylistIdPlayerVars (IntPtr playlistId, IntPtr playerVars);
+        bool LoadWithPlaylistId (string playlistId, NSDictionary playerVars);
 
         [Export("loadWithPlayerParams:")]
-        bool LoadWithPlayerParams (IntPtr additionalPlayerParams);
+        bool LoadWithPlayerParams (NSDictionary additionalPlayerParams);
 
         [Export("playVideo")]
         void PlayVideo ();
@@ -131,43 +136,43 @@ namespace NativeLibrary
         void StopVideo ();
 
         [Export("seekToSeconds:allowSeekAhead:")]
-        void SeekToSecondsAllowSeekAhead (float seekToSeconds, bool allowSeekAhead);
+        void SeekToSeconds (float seekToSeconds, bool allowSeekAhead);
 
         [Export("cueVideoById:startSeconds:suggestedQuality:")]
-        void CueVideoByIdStartSecondsSuggestedQuality (IntPtr videoId, float startSeconds, YTPlaybackQuality suggestedQuality);
+        void CueVideoById (string videoId, float startSeconds, YTPlaybackQuality suggestedQuality);
 
         [Export("cueVideoById:startSeconds:endSeconds:suggestedQuality:")]
-        void CueVideoByIdStartSecondsEndSecondsSuggestedQuality (IntPtr videoId, float startSeconds, float endSeconds, YTPlaybackQuality suggestedQuality);
+        void CueVideoById (string videoId, float startSeconds, float endSeconds, YTPlaybackQuality suggestedQuality);
 
         [Export("loadVideoById:startSeconds:suggestedQuality:")]
-        void LoadVideoByIdStartSecondsSuggestedQuality (IntPtr videoId, float startSeconds, YTPlaybackQuality suggestedQuality);
+        void LoadVideoById (string videoId, float startSeconds, YTPlaybackQuality suggestedQuality);
 
         [Export("loadVideoById:startSeconds:endSeconds:suggestedQuality:")]
-        void LoadVideoByIdStartSecondsEndSecondsSuggestedQuality (IntPtr videoId, float startSeconds, float endSeconds, YTPlaybackQuality suggestedQuality);
+        void LoadVideoById (string videoId, float startSeconds, float endSeconds, YTPlaybackQuality suggestedQuality);
 
         [Export("cueVideoByURL:startSeconds:suggestedQuality:")]
-        void CueVideoByURLStartSecondsSuggestedQuality (IntPtr videoURL, float startSeconds, YTPlaybackQuality suggestedQuality);
+        void CueVideoByURL (string videoURL, float startSeconds, YTPlaybackQuality suggestedQuality);
 
         [Export("cueVideoByURL:startSeconds:endSeconds:suggestedQuality:")]
-        void CueVideoByURLStartSecondsEndSecondsSuggestedQuality (IntPtr videoURL, float startSeconds, float endSeconds, YTPlaybackQuality suggestedQuality);
+        void CueVideoByURL (string videoURL, float startSeconds, float endSeconds, YTPlaybackQuality suggestedQuality);
 
         [Export("loadVideoByURL:startSeconds:suggestedQuality:")]
-        void LoadVideoByURLStartSecondsSuggestedQuality (IntPtr videoURL, float startSeconds, YTPlaybackQuality suggestedQuality);
+        void LoadVideoByURL (string videoURL, float startSeconds, YTPlaybackQuality suggestedQuality);
 
         [Export("loadVideoByURL:startSeconds:endSeconds:suggestedQuality:")]
-        void LoadVideoByURLStartSecondsEndSecondsSuggestedQuality (IntPtr videoURL, float startSeconds, float endSeconds, YTPlaybackQuality suggestedQuality);
+        void LoadVideoByURL (string videoURL, float startSeconds, float endSeconds, YTPlaybackQuality suggestedQuality);
 
         [Export("cuePlaylistByPlaylistId:index:startSeconds:suggestedQuality:")]
-        void CuePlaylistByPlaylistIdIndexStartSecondsSuggestedQuality (IntPtr playlistId, int index, float startSeconds, YTPlaybackQuality suggestedQuality);
+        void CuePlaylistByPlaylistId (string playlistId, int index, float startSeconds, YTPlaybackQuality suggestedQuality);
 
         [Export("cuePlaylistByVideos:index:startSeconds:suggestedQuality:")]
-        void CuePlaylistByVideosIdIndexStartSecondsSuggestedQuality (IntPtr videoIds, int index, float startSeconds, YTPlaybackQuality suggestedQuality);
+        void CuePlaylistByVideosId (string[] videoIds, int index, float startSeconds, YTPlaybackQuality suggestedQuality);
 
         [Export("loadPlaylistByPlaylistId:index:startSeconds:suggestedQuality:")]
-        void LoadPlaylistByPlaylistIdIndexStartSecondsSuggestedQuality (IntPtr playlistId, int index, float startSeconds, YTPlaybackQuality suggestedQuality);
+        void LoadPlaylistByPlaylistId (string playlistId, int index, float startSeconds, YTPlaybackQuality suggestedQuality);
 
         [Export("loadPlaylistByVideos:index:startSeconds:suggestedQuality:")]
-        void LoadPlaylistByVideosIndexStartSecondsSuggestedQuality (IntPtr videoIds, int index, float startSeconds, YTPlaybackQuality suggestedQuality);
+        void LoadPlaylistByVideos (string[] videoIds, int index, float startSeconds, YTPlaybackQuality suggestedQuality);
 
         [Export("nextVideo")]
         void NextVideo ();
@@ -185,7 +190,7 @@ namespace NativeLibrary
         void SetPlaybackRate(float suggestedRate);
 
         [Export("availablePlaybackRates")]
-        IntPtr AvailablePlaybackRates ();
+        NSNumber[] AvailablePlaybackRates (); // should return nint[] 
 
         [Export("setLoop:")]
         void SetLoop(bool loop);
@@ -209,27 +214,25 @@ namespace NativeLibrary
         void SetPlaybackQuality (YTPlaybackQuality suggestedQuality);
 
         [Export("availableQualityLevels")]
-        IntPtr AvailableQualityLevels ();
+        string[] AvailableQualityLevels ();
 
         [Export("duration")]
         double Duration ();
 
-        [Export("videoUrl")]
-        IntPtr VideoUrl ();
+        [Export("videoUrl")] 
+        NSUrl VideoUrl (); 
 
         [Export("videoEmbedCode")]
-        IntPtr VideoEmbedCode ();
+        string VideoEmbedCode ();
 
         [Export("playlist")]
-        IntPtr Playlist ();
+        string[] Playlist ();
 
         [Export("playlistIndex")]
-        int PlaylistIndex ();
+        nint PlaylistIndex ();
 
         [Export("removeWebView")]
         void RemoveWebView ();
     }
-
-
 }
 

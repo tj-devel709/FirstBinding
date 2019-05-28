@@ -2,43 +2,44 @@
 
 namespace NativeLibrary
 {
-
     //[Native] // needed for enums defined as NSInteger in ObjC
-    enum YTPlayerState {
-        kYTPlayerStateUnstarted,
-        kYTPlayerStateEnded,
-        kYTPlayerStatePlaying,
-        kYTPlayerStatePaused,
-        kYTPlayerStateBuffering,
-        kYTPlayerStateQueued,
-        kYTPlayerStateUnknown
+    public enum YTPlayerState
+    {
+        Unstarted,
+        Ended,
+        Playing,
+        Paused,
+        Buffering,
+        Queued,
+        Unknown
     }
 
     //[Native] // needed for enums defined as NSInteger in ObjC
-    enum YTPlaybackQuality
+    public enum YTPlaybackQuality
     {
-        kYTPlaybackQualitySmall,
-        kYTPlaybackQualityMedium,
-        kYTPlaybackQualityLarge,
-        kYTPlaybackQualityHD720,
-        kYTPlaybackQualityHD1080,
-        kYTPlaybackQualityHighRes,
-        kYTPlaybackQualityAuto, /** Addition for YouTube Live Events. */
-        kYTPlaybackQualityDefault,
-        kYTPlaybackQualityUnknown /** This should never be returned. It is here for future proofing. */
+        Small,
+        Medium,
+        Large,
+        HD720,
+        HD1080,
+        HighRes,
+        Auto, /** Addition for YouTube Live Events. */
+        Default,
+        Unknown /** This should never be returned. It is here for future proofing. */
     }
 
     //[Native] // needed for enums defined as NSInteger in ObjC
-    enum YTPlayerError
+    public enum YTPlayerError
     {
-        kYTPlayerErrorInvalidParam,
-        kYTPlayerErrorHTML5Error,
-        kYTPlayerErrorVideoNotFound, // Functionally equivalent error codes 100 and
+        InvalidParam,
+        HTML5Error,
+        VideoNotFound, // Functionally equivalent error codes 100 and
                                      // 105 have been collapsed into |kYTPlayerErrorVideoNotFound|.
-        kYTPlayerErrorNotEmbeddable, // Functionally equivalent error codes 101 and
+        NotEmbeddable, // Functionally equivalent error codes 101 and
                                      // 150 have been collapsed into |kYTPlayerErrorNotEmbeddable|.
-        kYTPlayerErrorUnknown
+        Unknown
     }
+
 
 
 }

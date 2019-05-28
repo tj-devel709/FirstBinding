@@ -44,7 +44,7 @@ using CoreFoundation;
 
 namespace NativeLibrary {
 	[Register("YTPlayerView", true)]
-	public unsafe partial class YTPlayerView : global::UIKit.UIWebViewDelegate {
+	public unsafe partial class YTPlayerView : global::UIKit.UIView, global::UIKit.IUIWebViewDelegate {
 		
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
 		static readonly IntPtr class_ptr = Class.GetHandle ("YTPlayerView");
@@ -65,6 +65,21 @@ namespace NativeLibrary {
 		}
 
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
+		[DesignatedInitializer]
+		[EditorBrowsable (EditorBrowsableState.Advanced)]
+		[Export ("initWithCoder:")]
+		public YTPlayerView (NSCoder coder) : base (NSObjectFlag.Empty)
+		{
+
+			IsDirectBinding = GetType ().Assembly == global::ApiDefinition.Messaging.this_assembly;
+			if (IsDirectBinding) {
+				InitializeHandle (global::ApiDefinition.Messaging.IntPtr_objc_msgSend_IntPtr (this.Handle, Selector.GetHandle ("initWithCoder:"), coder.Handle), "initWithCoder:");
+			} else {
+				InitializeHandle (global::ApiDefinition.Messaging.IntPtr_objc_msgSendSuper_IntPtr (this.SuperHandle, Selector.GetHandle ("initWithCoder:"), coder.Handle), "initWithCoder:");
+			}
+		}
+
+		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
 		[EditorBrowsable (EditorBrowsableState.Advanced)]
 		protected YTPlayerView (NSObjectFlag t) : base (t)
 		{
@@ -80,90 +95,126 @@ namespace NativeLibrary {
 
 		[Export ("availablePlaybackRates")]
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public virtual global::System.IntPtr AvailablePlaybackRates ()
+		public virtual NSNumber[] AvailablePlaybackRates ()
 		{
 			if (IsDirectBinding) {
-				return global::ApiDefinition.Messaging.IntPtr_objc_msgSend (this.Handle, Selector.GetHandle ("availablePlaybackRates"));
+				return NSArray.ArrayFromHandle<NSNumber>(global::ApiDefinition.Messaging.IntPtr_objc_msgSend (this.Handle, Selector.GetHandle ("availablePlaybackRates")));
 			} else {
-				return global::ApiDefinition.Messaging.IntPtr_objc_msgSendSuper (this.SuperHandle, Selector.GetHandle ("availablePlaybackRates"));
+				return NSArray.ArrayFromHandle<NSNumber>(global::ApiDefinition.Messaging.IntPtr_objc_msgSendSuper (this.SuperHandle, Selector.GetHandle ("availablePlaybackRates")));
 			}
 		}
 		
 		[Export ("availableQualityLevels")]
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public virtual global::System.IntPtr AvailableQualityLevels ()
+		public virtual string[] AvailableQualityLevels ()
 		{
 			if (IsDirectBinding) {
-				return global::ApiDefinition.Messaging.IntPtr_objc_msgSend (this.Handle, Selector.GetHandle ("availableQualityLevels"));
+				return NSArray.StringArrayFromHandle (global::ApiDefinition.Messaging.IntPtr_objc_msgSend (this.Handle, Selector.GetHandle ("availableQualityLevels")));
 			} else {
-				return global::ApiDefinition.Messaging.IntPtr_objc_msgSendSuper (this.SuperHandle, Selector.GetHandle ("availableQualityLevels"));
+				return NSArray.StringArrayFromHandle (global::ApiDefinition.Messaging.IntPtr_objc_msgSendSuper (this.SuperHandle, Selector.GetHandle ("availableQualityLevels")));
 			}
 		}
 		
 		[Export ("cuePlaylistByPlaylistId:index:startSeconds:suggestedQuality:")]
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public virtual void CuePlaylistByPlaylistIdIndexStartSecondsSuggestedQuality (global::System.IntPtr playlistId, int index, float startSeconds, YTPlaybackQuality suggestedQuality)
+		public virtual void CuePlaylistByPlaylistId (string playlistId, int index, float startSeconds, YTPlaybackQuality suggestedQuality)
 		{
+			if (playlistId == null)
+				throw new ArgumentNullException ("playlistId");
+			var nsplaylistId = NSString.CreateNative (playlistId);
+			
 			if (IsDirectBinding) {
-				global::ApiDefinition.Messaging.void_objc_msgSend_IntPtr_int_float_int (this.Handle, Selector.GetHandle ("cuePlaylistByPlaylistId:index:startSeconds:suggestedQuality:"), playlistId, index, startSeconds, (int)suggestedQuality);
+				global::ApiDefinition.Messaging.void_objc_msgSend_IntPtr_int_float_int (this.Handle, Selector.GetHandle ("cuePlaylistByPlaylistId:index:startSeconds:suggestedQuality:"), nsplaylistId, index, startSeconds, (int)suggestedQuality);
 			} else {
-				global::ApiDefinition.Messaging.void_objc_msgSendSuper_IntPtr_int_float_int (this.SuperHandle, Selector.GetHandle ("cuePlaylistByPlaylistId:index:startSeconds:suggestedQuality:"), playlistId, index, startSeconds, (int)suggestedQuality);
+				global::ApiDefinition.Messaging.void_objc_msgSendSuper_IntPtr_int_float_int (this.SuperHandle, Selector.GetHandle ("cuePlaylistByPlaylistId:index:startSeconds:suggestedQuality:"), nsplaylistId, index, startSeconds, (int)suggestedQuality);
 			}
+			NSString.ReleaseNative (nsplaylistId);
+			
 		}
 		
 		[Export ("cuePlaylistByVideos:index:startSeconds:suggestedQuality:")]
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public virtual void CuePlaylistByVideosIdIndexStartSecondsSuggestedQuality (global::System.IntPtr videoIds, int index, float startSeconds, YTPlaybackQuality suggestedQuality)
+		public virtual void CuePlaylistByVideosId (string[] videoIds, int index, float startSeconds, YTPlaybackQuality suggestedQuality)
 		{
+			if (videoIds == null)
+				throw new ArgumentNullException ("videoIds");
+			var nsa_videoIds = NSArray.FromStrings (videoIds);
+			
 			if (IsDirectBinding) {
-				global::ApiDefinition.Messaging.void_objc_msgSend_IntPtr_int_float_int (this.Handle, Selector.GetHandle ("cuePlaylistByVideos:index:startSeconds:suggestedQuality:"), videoIds, index, startSeconds, (int)suggestedQuality);
+				global::ApiDefinition.Messaging.void_objc_msgSend_IntPtr_int_float_int (this.Handle, Selector.GetHandle ("cuePlaylistByVideos:index:startSeconds:suggestedQuality:"), nsa_videoIds.Handle, index, startSeconds, (int)suggestedQuality);
 			} else {
-				global::ApiDefinition.Messaging.void_objc_msgSendSuper_IntPtr_int_float_int (this.SuperHandle, Selector.GetHandle ("cuePlaylistByVideos:index:startSeconds:suggestedQuality:"), videoIds, index, startSeconds, (int)suggestedQuality);
+				global::ApiDefinition.Messaging.void_objc_msgSendSuper_IntPtr_int_float_int (this.SuperHandle, Selector.GetHandle ("cuePlaylistByVideos:index:startSeconds:suggestedQuality:"), nsa_videoIds.Handle, index, startSeconds, (int)suggestedQuality);
 			}
-		}
-		
-		[Export ("cueVideoById:startSeconds:endSeconds:suggestedQuality:")]
-		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public virtual void CueVideoByIdStartSecondsEndSecondsSuggestedQuality (global::System.IntPtr videoId, float startSeconds, float endSeconds, YTPlaybackQuality suggestedQuality)
-		{
-			if (IsDirectBinding) {
-				global::ApiDefinition.Messaging.void_objc_msgSend_IntPtr_float_float_int (this.Handle, Selector.GetHandle ("cueVideoById:startSeconds:endSeconds:suggestedQuality:"), videoId, startSeconds, endSeconds, (int)suggestedQuality);
-			} else {
-				global::ApiDefinition.Messaging.void_objc_msgSendSuper_IntPtr_float_float_int (this.SuperHandle, Selector.GetHandle ("cueVideoById:startSeconds:endSeconds:suggestedQuality:"), videoId, startSeconds, endSeconds, (int)suggestedQuality);
-			}
+			nsa_videoIds.Dispose ();
+			
 		}
 		
 		[Export ("cueVideoById:startSeconds:suggestedQuality:")]
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public virtual void CueVideoByIdStartSecondsSuggestedQuality (global::System.IntPtr videoId, float startSeconds, YTPlaybackQuality suggestedQuality)
+		public virtual void CueVideoById (string videoId, float startSeconds, YTPlaybackQuality suggestedQuality)
 		{
+			if (videoId == null)
+				throw new ArgumentNullException ("videoId");
+			var nsvideoId = NSString.CreateNative (videoId);
+			
 			if (IsDirectBinding) {
-				global::ApiDefinition.Messaging.void_objc_msgSend_IntPtr_float_int (this.Handle, Selector.GetHandle ("cueVideoById:startSeconds:suggestedQuality:"), videoId, startSeconds, (int)suggestedQuality);
+				global::ApiDefinition.Messaging.void_objc_msgSend_IntPtr_float_int (this.Handle, Selector.GetHandle ("cueVideoById:startSeconds:suggestedQuality:"), nsvideoId, startSeconds, (int)suggestedQuality);
 			} else {
-				global::ApiDefinition.Messaging.void_objc_msgSendSuper_IntPtr_float_int (this.SuperHandle, Selector.GetHandle ("cueVideoById:startSeconds:suggestedQuality:"), videoId, startSeconds, (int)suggestedQuality);
+				global::ApiDefinition.Messaging.void_objc_msgSendSuper_IntPtr_float_int (this.SuperHandle, Selector.GetHandle ("cueVideoById:startSeconds:suggestedQuality:"), nsvideoId, startSeconds, (int)suggestedQuality);
 			}
+			NSString.ReleaseNative (nsvideoId);
+			
 		}
 		
-		[Export ("cueVideoByURL:startSeconds:endSeconds:suggestedQuality:")]
+		[Export ("cueVideoById:startSeconds:endSeconds:suggestedQuality:")]
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public virtual void CueVideoByURLStartSecondsEndSecondsSuggestedQuality (global::System.IntPtr videoURL, float startSeconds, float endSeconds, YTPlaybackQuality suggestedQuality)
+		public virtual void CueVideoById (string videoId, float startSeconds, float endSeconds, YTPlaybackQuality suggestedQuality)
 		{
+			if (videoId == null)
+				throw new ArgumentNullException ("videoId");
+			var nsvideoId = NSString.CreateNative (videoId);
+			
 			if (IsDirectBinding) {
-				global::ApiDefinition.Messaging.void_objc_msgSend_IntPtr_float_float_int (this.Handle, Selector.GetHandle ("cueVideoByURL:startSeconds:endSeconds:suggestedQuality:"), videoURL, startSeconds, endSeconds, (int)suggestedQuality);
+				global::ApiDefinition.Messaging.void_objc_msgSend_IntPtr_float_float_int (this.Handle, Selector.GetHandle ("cueVideoById:startSeconds:endSeconds:suggestedQuality:"), nsvideoId, startSeconds, endSeconds, (int)suggestedQuality);
 			} else {
-				global::ApiDefinition.Messaging.void_objc_msgSendSuper_IntPtr_float_float_int (this.SuperHandle, Selector.GetHandle ("cueVideoByURL:startSeconds:endSeconds:suggestedQuality:"), videoURL, startSeconds, endSeconds, (int)suggestedQuality);
+				global::ApiDefinition.Messaging.void_objc_msgSendSuper_IntPtr_float_float_int (this.SuperHandle, Selector.GetHandle ("cueVideoById:startSeconds:endSeconds:suggestedQuality:"), nsvideoId, startSeconds, endSeconds, (int)suggestedQuality);
 			}
+			NSString.ReleaseNative (nsvideoId);
+			
 		}
 		
 		[Export ("cueVideoByURL:startSeconds:suggestedQuality:")]
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public virtual void CueVideoByURLStartSecondsSuggestedQuality (global::System.IntPtr videoURL, float startSeconds, YTPlaybackQuality suggestedQuality)
+		public virtual void CueVideoByURL (string videoURL, float startSeconds, YTPlaybackQuality suggestedQuality)
 		{
+			if (videoURL == null)
+				throw new ArgumentNullException ("videoURL");
+			var nsvideoURL = NSString.CreateNative (videoURL);
+			
 			if (IsDirectBinding) {
-				global::ApiDefinition.Messaging.void_objc_msgSend_IntPtr_float_int (this.Handle, Selector.GetHandle ("cueVideoByURL:startSeconds:suggestedQuality:"), videoURL, startSeconds, (int)suggestedQuality);
+				global::ApiDefinition.Messaging.void_objc_msgSend_IntPtr_float_int (this.Handle, Selector.GetHandle ("cueVideoByURL:startSeconds:suggestedQuality:"), nsvideoURL, startSeconds, (int)suggestedQuality);
 			} else {
-				global::ApiDefinition.Messaging.void_objc_msgSendSuper_IntPtr_float_int (this.SuperHandle, Selector.GetHandle ("cueVideoByURL:startSeconds:suggestedQuality:"), videoURL, startSeconds, (int)suggestedQuality);
+				global::ApiDefinition.Messaging.void_objc_msgSendSuper_IntPtr_float_int (this.SuperHandle, Selector.GetHandle ("cueVideoByURL:startSeconds:suggestedQuality:"), nsvideoURL, startSeconds, (int)suggestedQuality);
 			}
+			NSString.ReleaseNative (nsvideoURL);
+			
+		}
+		
+		[Export ("cueVideoByURL:startSeconds:endSeconds:suggestedQuality:")]
+		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
+		public virtual void CueVideoByURL (string videoURL, float startSeconds, float endSeconds, YTPlaybackQuality suggestedQuality)
+		{
+			if (videoURL == null)
+				throw new ArgumentNullException ("videoURL");
+			var nsvideoURL = NSString.CreateNative (videoURL);
+			
+			if (IsDirectBinding) {
+				global::ApiDefinition.Messaging.void_objc_msgSend_IntPtr_float_float_int (this.Handle, Selector.GetHandle ("cueVideoByURL:startSeconds:endSeconds:suggestedQuality:"), nsvideoURL, startSeconds, endSeconds, (int)suggestedQuality);
+			} else {
+				global::ApiDefinition.Messaging.void_objc_msgSendSuper_IntPtr_float_float_int (this.SuperHandle, Selector.GetHandle ("cueVideoByURL:startSeconds:endSeconds:suggestedQuality:"), nsvideoURL, startSeconds, endSeconds, (int)suggestedQuality);
+			}
+			NSString.ReleaseNative (nsvideoURL);
+			
 		}
 		
 		[Export ("currentTime")]
@@ -190,123 +241,197 @@ namespace NativeLibrary {
 		
 		[Export ("loadPlaylistByPlaylistId:index:startSeconds:suggestedQuality:")]
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public virtual void LoadPlaylistByPlaylistIdIndexStartSecondsSuggestedQuality (global::System.IntPtr playlistId, int index, float startSeconds, YTPlaybackQuality suggestedQuality)
+		public virtual void LoadPlaylistByPlaylistId (string playlistId, int index, float startSeconds, YTPlaybackQuality suggestedQuality)
 		{
+			if (playlistId == null)
+				throw new ArgumentNullException ("playlistId");
+			var nsplaylistId = NSString.CreateNative (playlistId);
+			
 			if (IsDirectBinding) {
-				global::ApiDefinition.Messaging.void_objc_msgSend_IntPtr_int_float_int (this.Handle, Selector.GetHandle ("loadPlaylistByPlaylistId:index:startSeconds:suggestedQuality:"), playlistId, index, startSeconds, (int)suggestedQuality);
+				global::ApiDefinition.Messaging.void_objc_msgSend_IntPtr_int_float_int (this.Handle, Selector.GetHandle ("loadPlaylistByPlaylistId:index:startSeconds:suggestedQuality:"), nsplaylistId, index, startSeconds, (int)suggestedQuality);
 			} else {
-				global::ApiDefinition.Messaging.void_objc_msgSendSuper_IntPtr_int_float_int (this.SuperHandle, Selector.GetHandle ("loadPlaylistByPlaylistId:index:startSeconds:suggestedQuality:"), playlistId, index, startSeconds, (int)suggestedQuality);
+				global::ApiDefinition.Messaging.void_objc_msgSendSuper_IntPtr_int_float_int (this.SuperHandle, Selector.GetHandle ("loadPlaylistByPlaylistId:index:startSeconds:suggestedQuality:"), nsplaylistId, index, startSeconds, (int)suggestedQuality);
 			}
+			NSString.ReleaseNative (nsplaylistId);
+			
 		}
 		
 		[Export ("loadPlaylistByVideos:index:startSeconds:suggestedQuality:")]
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public virtual void LoadPlaylistByVideosIndexStartSecondsSuggestedQuality (global::System.IntPtr videoIds, int index, float startSeconds, YTPlaybackQuality suggestedQuality)
+		public virtual void LoadPlaylistByVideos (string[] videoIds, int index, float startSeconds, YTPlaybackQuality suggestedQuality)
 		{
+			if (videoIds == null)
+				throw new ArgumentNullException ("videoIds");
+			var nsa_videoIds = NSArray.FromStrings (videoIds);
+			
 			if (IsDirectBinding) {
-				global::ApiDefinition.Messaging.void_objc_msgSend_IntPtr_int_float_int (this.Handle, Selector.GetHandle ("loadPlaylistByVideos:index:startSeconds:suggestedQuality:"), videoIds, index, startSeconds, (int)suggestedQuality);
+				global::ApiDefinition.Messaging.void_objc_msgSend_IntPtr_int_float_int (this.Handle, Selector.GetHandle ("loadPlaylistByVideos:index:startSeconds:suggestedQuality:"), nsa_videoIds.Handle, index, startSeconds, (int)suggestedQuality);
 			} else {
-				global::ApiDefinition.Messaging.void_objc_msgSendSuper_IntPtr_int_float_int (this.SuperHandle, Selector.GetHandle ("loadPlaylistByVideos:index:startSeconds:suggestedQuality:"), videoIds, index, startSeconds, (int)suggestedQuality);
+				global::ApiDefinition.Messaging.void_objc_msgSendSuper_IntPtr_int_float_int (this.SuperHandle, Selector.GetHandle ("loadPlaylistByVideos:index:startSeconds:suggestedQuality:"), nsa_videoIds.Handle, index, startSeconds, (int)suggestedQuality);
 			}
-		}
-		
-		[Export ("loadVideoById:startSeconds:endSeconds:suggestedQuality:")]
-		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public virtual void LoadVideoByIdStartSecondsEndSecondsSuggestedQuality (global::System.IntPtr videoId, float startSeconds, float endSeconds, YTPlaybackQuality suggestedQuality)
-		{
-			if (IsDirectBinding) {
-				global::ApiDefinition.Messaging.void_objc_msgSend_IntPtr_float_float_int (this.Handle, Selector.GetHandle ("loadVideoById:startSeconds:endSeconds:suggestedQuality:"), videoId, startSeconds, endSeconds, (int)suggestedQuality);
-			} else {
-				global::ApiDefinition.Messaging.void_objc_msgSendSuper_IntPtr_float_float_int (this.SuperHandle, Selector.GetHandle ("loadVideoById:startSeconds:endSeconds:suggestedQuality:"), videoId, startSeconds, endSeconds, (int)suggestedQuality);
-			}
+			nsa_videoIds.Dispose ();
+			
 		}
 		
 		[Export ("loadVideoById:startSeconds:suggestedQuality:")]
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public virtual void LoadVideoByIdStartSecondsSuggestedQuality (global::System.IntPtr videoId, float startSeconds, YTPlaybackQuality suggestedQuality)
+		public virtual void LoadVideoById (string videoId, float startSeconds, YTPlaybackQuality suggestedQuality)
 		{
+			if (videoId == null)
+				throw new ArgumentNullException ("videoId");
+			var nsvideoId = NSString.CreateNative (videoId);
+			
 			if (IsDirectBinding) {
-				global::ApiDefinition.Messaging.void_objc_msgSend_IntPtr_float_int (this.Handle, Selector.GetHandle ("loadVideoById:startSeconds:suggestedQuality:"), videoId, startSeconds, (int)suggestedQuality);
+				global::ApiDefinition.Messaging.void_objc_msgSend_IntPtr_float_int (this.Handle, Selector.GetHandle ("loadVideoById:startSeconds:suggestedQuality:"), nsvideoId, startSeconds, (int)suggestedQuality);
 			} else {
-				global::ApiDefinition.Messaging.void_objc_msgSendSuper_IntPtr_float_int (this.SuperHandle, Selector.GetHandle ("loadVideoById:startSeconds:suggestedQuality:"), videoId, startSeconds, (int)suggestedQuality);
+				global::ApiDefinition.Messaging.void_objc_msgSendSuper_IntPtr_float_int (this.SuperHandle, Selector.GetHandle ("loadVideoById:startSeconds:suggestedQuality:"), nsvideoId, startSeconds, (int)suggestedQuality);
 			}
+			NSString.ReleaseNative (nsvideoId);
+			
 		}
 		
-		[Export ("loadVideoByURL:startSeconds:endSeconds:suggestedQuality:")]
+		[Export ("loadVideoById:startSeconds:endSeconds:suggestedQuality:")]
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public virtual void LoadVideoByURLStartSecondsEndSecondsSuggestedQuality (global::System.IntPtr videoURL, float startSeconds, float endSeconds, YTPlaybackQuality suggestedQuality)
+		public virtual void LoadVideoById (string videoId, float startSeconds, float endSeconds, YTPlaybackQuality suggestedQuality)
 		{
+			if (videoId == null)
+				throw new ArgumentNullException ("videoId");
+			var nsvideoId = NSString.CreateNative (videoId);
+			
 			if (IsDirectBinding) {
-				global::ApiDefinition.Messaging.void_objc_msgSend_IntPtr_float_float_int (this.Handle, Selector.GetHandle ("loadVideoByURL:startSeconds:endSeconds:suggestedQuality:"), videoURL, startSeconds, endSeconds, (int)suggestedQuality);
+				global::ApiDefinition.Messaging.void_objc_msgSend_IntPtr_float_float_int (this.Handle, Selector.GetHandle ("loadVideoById:startSeconds:endSeconds:suggestedQuality:"), nsvideoId, startSeconds, endSeconds, (int)suggestedQuality);
 			} else {
-				global::ApiDefinition.Messaging.void_objc_msgSendSuper_IntPtr_float_float_int (this.SuperHandle, Selector.GetHandle ("loadVideoByURL:startSeconds:endSeconds:suggestedQuality:"), videoURL, startSeconds, endSeconds, (int)suggestedQuality);
+				global::ApiDefinition.Messaging.void_objc_msgSendSuper_IntPtr_float_float_int (this.SuperHandle, Selector.GetHandle ("loadVideoById:startSeconds:endSeconds:suggestedQuality:"), nsvideoId, startSeconds, endSeconds, (int)suggestedQuality);
 			}
+			NSString.ReleaseNative (nsvideoId);
+			
 		}
 		
 		[Export ("loadVideoByURL:startSeconds:suggestedQuality:")]
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public virtual void LoadVideoByURLStartSecondsSuggestedQuality (global::System.IntPtr videoURL, float startSeconds, YTPlaybackQuality suggestedQuality)
+		public virtual void LoadVideoByURL (string videoURL, float startSeconds, YTPlaybackQuality suggestedQuality)
 		{
+			if (videoURL == null)
+				throw new ArgumentNullException ("videoURL");
+			var nsvideoURL = NSString.CreateNative (videoURL);
+			
 			if (IsDirectBinding) {
-				global::ApiDefinition.Messaging.void_objc_msgSend_IntPtr_float_int (this.Handle, Selector.GetHandle ("loadVideoByURL:startSeconds:suggestedQuality:"), videoURL, startSeconds, (int)suggestedQuality);
+				global::ApiDefinition.Messaging.void_objc_msgSend_IntPtr_float_int (this.Handle, Selector.GetHandle ("loadVideoByURL:startSeconds:suggestedQuality:"), nsvideoURL, startSeconds, (int)suggestedQuality);
 			} else {
-				global::ApiDefinition.Messaging.void_objc_msgSendSuper_IntPtr_float_int (this.SuperHandle, Selector.GetHandle ("loadVideoByURL:startSeconds:suggestedQuality:"), videoURL, startSeconds, (int)suggestedQuality);
+				global::ApiDefinition.Messaging.void_objc_msgSendSuper_IntPtr_float_int (this.SuperHandle, Selector.GetHandle ("loadVideoByURL:startSeconds:suggestedQuality:"), nsvideoURL, startSeconds, (int)suggestedQuality);
 			}
+			NSString.ReleaseNative (nsvideoURL);
+			
+		}
+		
+		[Export ("loadVideoByURL:startSeconds:endSeconds:suggestedQuality:")]
+		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
+		public virtual void LoadVideoByURL (string videoURL, float startSeconds, float endSeconds, YTPlaybackQuality suggestedQuality)
+		{
+			if (videoURL == null)
+				throw new ArgumentNullException ("videoURL");
+			var nsvideoURL = NSString.CreateNative (videoURL);
+			
+			if (IsDirectBinding) {
+				global::ApiDefinition.Messaging.void_objc_msgSend_IntPtr_float_float_int (this.Handle, Selector.GetHandle ("loadVideoByURL:startSeconds:endSeconds:suggestedQuality:"), nsvideoURL, startSeconds, endSeconds, (int)suggestedQuality);
+			} else {
+				global::ApiDefinition.Messaging.void_objc_msgSendSuper_IntPtr_float_float_int (this.SuperHandle, Selector.GetHandle ("loadVideoByURL:startSeconds:endSeconds:suggestedQuality:"), nsvideoURL, startSeconds, endSeconds, (int)suggestedQuality);
+			}
+			NSString.ReleaseNative (nsvideoURL);
+			
 		}
 		
 		[Export ("loadWithPlayerParams:")]
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public virtual bool LoadWithPlayerParams (global::System.IntPtr additionalPlayerParams)
+		public virtual bool LoadWithPlayerParams (NSDictionary additionalPlayerParams)
 		{
+			if (additionalPlayerParams == null)
+				throw new ArgumentNullException ("additionalPlayerParams");
 			if (IsDirectBinding) {
-				return global::ApiDefinition.Messaging.bool_objc_msgSend_IntPtr (this.Handle, Selector.GetHandle ("loadWithPlayerParams:"), additionalPlayerParams);
+				return global::ApiDefinition.Messaging.bool_objc_msgSend_IntPtr (this.Handle, Selector.GetHandle ("loadWithPlayerParams:"), additionalPlayerParams.Handle);
 			} else {
-				return global::ApiDefinition.Messaging.bool_objc_msgSendSuper_IntPtr (this.SuperHandle, Selector.GetHandle ("loadWithPlayerParams:"), additionalPlayerParams);
+				return global::ApiDefinition.Messaging.bool_objc_msgSendSuper_IntPtr (this.SuperHandle, Selector.GetHandle ("loadWithPlayerParams:"), additionalPlayerParams.Handle);
 			}
 		}
 		
 		[Export ("loadWithPlaylistId:")]
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public virtual bool LoadWithPlaylistId (global::System.IntPtr playlistId)
+		public virtual bool LoadWithPlaylistId (string playlistId)
 		{
+			if (playlistId == null)
+				throw new ArgumentNullException ("playlistId");
+			var nsplaylistId = NSString.CreateNative (playlistId);
+			
+			bool ret;
 			if (IsDirectBinding) {
-				return global::ApiDefinition.Messaging.bool_objc_msgSend_IntPtr (this.Handle, Selector.GetHandle ("loadWithPlaylistId:"), playlistId);
+				ret = global::ApiDefinition.Messaging.bool_objc_msgSend_IntPtr (this.Handle, Selector.GetHandle ("loadWithPlaylistId:"), nsplaylistId);
 			} else {
-				return global::ApiDefinition.Messaging.bool_objc_msgSendSuper_IntPtr (this.SuperHandle, Selector.GetHandle ("loadWithPlaylistId:"), playlistId);
+				ret = global::ApiDefinition.Messaging.bool_objc_msgSendSuper_IntPtr (this.SuperHandle, Selector.GetHandle ("loadWithPlaylistId:"), nsplaylistId);
 			}
+			NSString.ReleaseNative (nsplaylistId);
+			
+			return ret;
 		}
 		
 		[Export ("loadWithPlaylistId:playerVars:")]
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public virtual bool LoadWithPlaylistIdPlayerVars (global::System.IntPtr playlistId, global::System.IntPtr playerVars)
+		public virtual bool LoadWithPlaylistId (string playlistId, NSDictionary playerVars)
 		{
+			if (playlistId == null)
+				throw new ArgumentNullException ("playlistId");
+			if (playerVars == null)
+				throw new ArgumentNullException ("playerVars");
+			var nsplaylistId = NSString.CreateNative (playlistId);
+			
+			bool ret;
 			if (IsDirectBinding) {
-				return global::ApiDefinition.Messaging.bool_objc_msgSend_IntPtr_IntPtr (this.Handle, Selector.GetHandle ("loadWithPlaylistId:playerVars:"), playlistId, playerVars);
+				ret = global::ApiDefinition.Messaging.bool_objc_msgSend_IntPtr_IntPtr (this.Handle, Selector.GetHandle ("loadWithPlaylistId:playerVars:"), nsplaylistId, playerVars.Handle);
 			} else {
-				return global::ApiDefinition.Messaging.bool_objc_msgSendSuper_IntPtr_IntPtr (this.SuperHandle, Selector.GetHandle ("loadWithPlaylistId:playerVars:"), playlistId, playerVars);
+				ret = global::ApiDefinition.Messaging.bool_objc_msgSendSuper_IntPtr_IntPtr (this.SuperHandle, Selector.GetHandle ("loadWithPlaylistId:playerVars:"), nsplaylistId, playerVars.Handle);
 			}
+			NSString.ReleaseNative (nsplaylistId);
+			
+			return ret;
 		}
 		
 		[Export ("loadWithVideoId:")]
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public virtual bool LoadWithVideoId (global::System.IntPtr videoId)
+		public virtual bool LoadWithVideoId (string videoId)
 		{
+			if (videoId == null)
+				throw new ArgumentNullException ("videoId");
+			var nsvideoId = NSString.CreateNative (videoId);
+			
+			bool ret;
 			if (IsDirectBinding) {
-				return global::ApiDefinition.Messaging.bool_objc_msgSend_IntPtr (this.Handle, Selector.GetHandle ("loadWithVideoId:"), videoId);
+				ret = global::ApiDefinition.Messaging.bool_objc_msgSend_IntPtr (this.Handle, Selector.GetHandle ("loadWithVideoId:"), nsvideoId);
 			} else {
-				return global::ApiDefinition.Messaging.bool_objc_msgSendSuper_IntPtr (this.SuperHandle, Selector.GetHandle ("loadWithVideoId:"), videoId);
+				ret = global::ApiDefinition.Messaging.bool_objc_msgSendSuper_IntPtr (this.SuperHandle, Selector.GetHandle ("loadWithVideoId:"), nsvideoId);
 			}
+			NSString.ReleaseNative (nsvideoId);
+			
+			return ret;
 		}
 		
 		[Export ("loadWithVideoId:playerVars:")]
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public virtual bool LoadWithVideoIdPlayerVars (global::System.IntPtr videoId, global::System.IntPtr playerVars)
+		public virtual bool LoadWithVideoId (string videoId, NSDictionary playerVars)
 		{
+			if (videoId == null)
+				throw new ArgumentNullException ("videoId");
+			if (playerVars == null)
+				throw new ArgumentNullException ("playerVars");
+			var nsvideoId = NSString.CreateNative (videoId);
+			
+			bool ret;
 			if (IsDirectBinding) {
-				return global::ApiDefinition.Messaging.bool_objc_msgSend_IntPtr_IntPtr (this.Handle, Selector.GetHandle ("loadWithVideoId:playerVars:"), videoId, playerVars);
+				ret = global::ApiDefinition.Messaging.bool_objc_msgSend_IntPtr_IntPtr (this.Handle, Selector.GetHandle ("loadWithVideoId:playerVars:"), nsvideoId, playerVars.Handle);
 			} else {
-				return global::ApiDefinition.Messaging.bool_objc_msgSendSuper_IntPtr_IntPtr (this.SuperHandle, Selector.GetHandle ("loadWithVideoId:playerVars:"), videoId, playerVars);
+				ret = global::ApiDefinition.Messaging.bool_objc_msgSendSuper_IntPtr_IntPtr (this.SuperHandle, Selector.GetHandle ("loadWithVideoId:playerVars:"), nsvideoId, playerVars.Handle);
 			}
+			NSString.ReleaseNative (nsvideoId);
+			
+			return ret;
 		}
 		
 		[Export ("nextVideo")]
@@ -388,23 +513,23 @@ namespace NativeLibrary {
 		
 		[Export ("playlist")]
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public virtual global::System.IntPtr Playlist ()
+		public virtual string[] Playlist ()
 		{
 			if (IsDirectBinding) {
-				return global::ApiDefinition.Messaging.IntPtr_objc_msgSend (this.Handle, Selector.GetHandle ("playlist"));
+				return NSArray.StringArrayFromHandle (global::ApiDefinition.Messaging.IntPtr_objc_msgSend (this.Handle, Selector.GetHandle ("playlist")));
 			} else {
-				return global::ApiDefinition.Messaging.IntPtr_objc_msgSendSuper (this.SuperHandle, Selector.GetHandle ("playlist"));
+				return NSArray.StringArrayFromHandle (global::ApiDefinition.Messaging.IntPtr_objc_msgSendSuper (this.SuperHandle, Selector.GetHandle ("playlist")));
 			}
 		}
 		
 		[Export ("playlistIndex")]
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public virtual int PlaylistIndex ()
+		public virtual nint PlaylistIndex ()
 		{
 			if (IsDirectBinding) {
-				return global::ApiDefinition.Messaging.int_objc_msgSend (this.Handle, Selector.GetHandle ("playlistIndex"));
+				return global::ApiDefinition.Messaging.nint_objc_msgSend (this.Handle, Selector.GetHandle ("playlistIndex"));
 			} else {
-				return global::ApiDefinition.Messaging.int_objc_msgSendSuper (this.SuperHandle, Selector.GetHandle ("playlistIndex"));
+				return global::ApiDefinition.Messaging.nint_objc_msgSendSuper (this.SuperHandle, Selector.GetHandle ("playlistIndex"));
 			}
 		}
 		
@@ -432,7 +557,7 @@ namespace NativeLibrary {
 		
 		[Export ("seekToSeconds:allowSeekAhead:")]
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public virtual void SeekToSecondsAllowSeekAhead (float seekToSeconds, bool allowSeekAhead)
+		public virtual void SeekToSeconds (float seekToSeconds, bool allowSeekAhead)
 		{
 			if (IsDirectBinding) {
 				global::ApiDefinition.Messaging.void_objc_msgSend_float_bool (this.Handle, Selector.GetHandle ("seekToSeconds:allowSeekAhead:"), seekToSeconds, allowSeekAhead);
@@ -498,12 +623,12 @@ namespace NativeLibrary {
 		
 		[Export ("videoEmbedCode")]
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public virtual global::System.IntPtr VideoEmbedCode ()
+		public virtual string VideoEmbedCode ()
 		{
 			if (IsDirectBinding) {
-				return global::ApiDefinition.Messaging.IntPtr_objc_msgSend (this.Handle, Selector.GetHandle ("videoEmbedCode"));
+				return NSString.FromHandle (global::ApiDefinition.Messaging.IntPtr_objc_msgSend (this.Handle, Selector.GetHandle ("videoEmbedCode")));
 			} else {
-				return global::ApiDefinition.Messaging.IntPtr_objc_msgSendSuper (this.SuperHandle, Selector.GetHandle ("videoEmbedCode"));
+				return NSString.FromHandle (global::ApiDefinition.Messaging.IntPtr_objc_msgSendSuper (this.SuperHandle, Selector.GetHandle ("videoEmbedCode")));
 			}
 		}
 		
@@ -520,52 +645,113 @@ namespace NativeLibrary {
 		
 		[Export ("videoUrl")]
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public virtual global::System.IntPtr VideoUrl ()
+		public virtual NSUrl VideoUrl ()
 		{
 			if (IsDirectBinding) {
-				return global::ApiDefinition.Messaging.IntPtr_objc_msgSend (this.Handle, Selector.GetHandle ("videoUrl"));
+				return  Runtime.GetNSObject<NSUrl> (global::ApiDefinition.Messaging.IntPtr_objc_msgSend (this.Handle, Selector.GetHandle ("videoUrl")));
 			} else {
-				return global::ApiDefinition.Messaging.IntPtr_objc_msgSendSuper (this.SuperHandle, Selector.GetHandle ("videoUrl"));
+				return  Runtime.GetNSObject<NSUrl> (global::ApiDefinition.Messaging.IntPtr_objc_msgSendSuper (this.SuperHandle, Selector.GetHandle ("videoUrl")));
 			}
 		}
 		
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public virtual YTPlayerViewDelegate Delegate {
-			[Export ("delegate")]
+		public IYTPlayerViewDelegate Delegate {
 			get {
-				YTPlayerViewDelegate ret;
+				return WeakDelegate as IYTPlayerViewDelegate;
+			}
+			set {
+				var rvalue = value as NSObject;
+				if (value != null && rvalue == null)
+					throw new ArgumentException ("The object passed of type " + value.GetType () + " does not derive from NSObject");
+				WeakDelegate = rvalue;
+			}
+		}
+		
+		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
+		object __mt_WeakDelegate_var;
+		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
+		public virtual NSObject WeakDelegate {
+			[Export ("delegate", ArgumentSemantic.Weak)]
+			get {
+				NSObject ret;
 				if (IsDirectBinding) {
-					ret =  Runtime.GetNSObject<YTPlayerViewDelegate> (global::ApiDefinition.Messaging.IntPtr_objc_msgSend (this.Handle, Selector.GetHandle ("delegate")));
+					ret = Runtime.GetNSObject (global::ApiDefinition.Messaging.IntPtr_objc_msgSend (this.Handle, Selector.GetHandle ("delegate")));
 				} else {
-					ret =  Runtime.GetNSObject<YTPlayerViewDelegate> (global::ApiDefinition.Messaging.IntPtr_objc_msgSendSuper (this.SuperHandle, Selector.GetHandle ("delegate")));
+					ret = Runtime.GetNSObject (global::ApiDefinition.Messaging.IntPtr_objc_msgSendSuper (this.SuperHandle, Selector.GetHandle ("delegate")));
+				}
+				MarkDirty ();
+				__mt_WeakDelegate_var = ret;
+				return ret;
+			}
+			
+			[Export ("setDelegate:", ArgumentSemantic.Weak)]
+			set {
+				if (IsDirectBinding) {
+					global::ApiDefinition.Messaging.void_objc_msgSend_IntPtr (this.Handle, Selector.GetHandle ("setDelegate:"), value == null ? IntPtr.Zero : value.Handle);
+				} else {
+					global::ApiDefinition.Messaging.void_objc_msgSendSuper_IntPtr (this.SuperHandle, Selector.GetHandle ("setDelegate:"), value == null ? IntPtr.Zero : value.Handle);
+				}
+				MarkDirty ();
+				__mt_WeakDelegate_var = value;
+			}
+		}
+		
+		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
+		public virtual global::UIKit.UIWebView WebView {
+			[Export ("webView", ArgumentSemantic.Retain)]
+			get {
+				global::UIKit.UIWebView ret;
+				if (IsDirectBinding) {
+					ret =  Runtime.GetNSObject<global::UIKit.UIWebView> (global::ApiDefinition.Messaging.IntPtr_objc_msgSend (this.Handle, Selector.GetHandle ("webView")));
+				} else {
+					ret =  Runtime.GetNSObject<global::UIKit.UIWebView> (global::ApiDefinition.Messaging.IntPtr_objc_msgSendSuper (this.SuperHandle, Selector.GetHandle ("webView")));
 				}
 				return ret;
 			}
 			
-			[Export ("setDelegate:")]
-			set {
-				if (value == null)
-					throw new ArgumentNullException ("value");
-				if (IsDirectBinding) {
-					global::ApiDefinition.Messaging.void_objc_msgSend_IntPtr (this.Handle, Selector.GetHandle ("setDelegate:"), value.Handle);
-				} else {
-					global::ApiDefinition.Messaging.void_objc_msgSendSuper_IntPtr (this.SuperHandle, Selector.GetHandle ("setDelegate:"), value.Handle);
-				}
-			}
 		}
 		
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public virtual global::System.IntPtr WebView {
-			[Export ("webView")]
-			get {
-				if (IsDirectBinding) {
-					return global::ApiDefinition.Messaging.IntPtr_objc_msgSend (this.Handle, Selector.GetHandle ("webView"));
-				} else {
-					return global::ApiDefinition.Messaging.IntPtr_objc_msgSendSuper (this.SuperHandle, Selector.GetHandle ("webView"));
-				}
+		protected override void Dispose (bool disposing)
+		{
+			base.Dispose (disposing);
+			if (Handle == IntPtr.Zero) {
+				__mt_WeakDelegate_var = null;
 			}
-			
 		}
+		public partial class YTPlayerViewAppearance : global::UIKit.UIView.UIViewAppearance {
+			protected internal YTPlayerViewAppearance (IntPtr handle) : base (handle) {}
+		}
+		
+		public static new YTPlayerViewAppearance Appearance {
+			get { return new YTPlayerViewAppearance (global::ApiDefinition.Messaging.IntPtr_objc_msgSend (class_ptr, ObjCRuntime.Selector.GetHandle ("appearance"))); }
+		}
+		
+		public static new YTPlayerViewAppearance GetAppearance<T> () where T: YTPlayerView {
+			return new YTPlayerViewAppearance (global::ApiDefinition.Messaging.IntPtr_objc_msgSend (Class.GetHandle (typeof (T)), ObjCRuntime.Selector.GetHandle ("appearance")));
+		}
+		
+		public static new YTPlayerViewAppearance AppearanceWhenContainedIn (params Type [] containers)
+		{
+			return new YTPlayerViewAppearance (UIAppearance.GetAppearance (class_ptr, containers));
+		}
+		
+		public static new YTPlayerViewAppearance GetAppearance (UITraitCollection traits) {
+			return new YTPlayerViewAppearance (UIAppearance.GetAppearance (class_ptr, traits));
+		}
+		
+		public static new YTPlayerViewAppearance GetAppearance (UITraitCollection traits, params Type [] containers) {
+			return new YTPlayerViewAppearance (UIAppearance.GetAppearance (class_ptr, traits, containers));
+		}
+		
+		public static new YTPlayerViewAppearance GetAppearance<T> (UITraitCollection traits) where T: YTPlayerView {
+			return new YTPlayerViewAppearance (UIAppearance.GetAppearance (Class.GetHandle (typeof (T)), traits));
+		}
+		
+		public static new YTPlayerViewAppearance GetAppearance<T> (UITraitCollection traits, params Type [] containers) where T: YTPlayerView{
+			return new YTPlayerViewAppearance (UIAppearance.GetAppearance (Class.GetHandle (typeof (T)), containers));
+		}
+		
 		
 	} /* class YTPlayerView */
 }

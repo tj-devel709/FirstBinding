@@ -44,58 +44,72 @@ using CoreFoundation;
 
 namespace NativeLibrary {
 	[Protocol (Name = "YTPlayerViewDelegate", WrapperType = typeof (YTPlayerViewDelegateWrapper))]
-	[ProtocolMember (IsRequired = false, IsProperty = false, IsStatic = false, Name = "PlayerViewDidBecomeReady", Selector = "playerViewDidBecomeReady:", ParameterType = new Type [] { typeof (IntPtr) }, ParameterByRef = new bool [] { false })]
-	[ProtocolMember (IsRequired = false, IsProperty = false, IsStatic = false, Name = "PlayerViewDidChangeToState", Selector = "playerView:didChangeToState:", ParameterType = new Type [] { typeof (IntPtr), typeof (NativeLibrary.YTPlayerState) }, ParameterByRef = new bool [] { false, false })]
-	[ProtocolMember (IsRequired = false, IsProperty = false, IsStatic = false, Name = "PlayerViewDidChangeToQuality", Selector = "playerView:didChangeToQuality:", ParameterType = new Type [] { typeof (IntPtr), typeof (NativeLibrary.YTPlaybackQuality) }, ParameterByRef = new bool [] { false, false })]
-	[ProtocolMember (IsRequired = false, IsProperty = false, IsStatic = false, Name = "PlayerViewReceivedError", Selector = "playerView:receivedError:", ParameterType = new Type [] { typeof (IntPtr), typeof (NativeLibrary.YTPlayerError) }, ParameterByRef = new bool [] { false, false })]
-	[ProtocolMember (IsRequired = false, IsProperty = false, IsStatic = false, Name = "PlayerViewDidPlayTime", Selector = "playerView:didPlayTime:", ParameterType = new Type [] { typeof (IntPtr), typeof (float) }, ParameterByRef = new bool [] { false, false })]
-	[ProtocolMember (IsRequired = false, IsProperty = false, IsStatic = false, Name = "PlayerViewPreferredWebViewBackgroundColor", Selector = "playerViewPreferredWebViewBackgroundColor:", ParameterType = new Type [] { typeof (IntPtr) }, ParameterByRef = new bool [] { false })]
-	[ProtocolMember (IsRequired = false, IsProperty = false, IsStatic = false, Name = "PlayerViewPreferredInitialLoadingView", Selector = "playerViewPreferredInitialLoadingView:", ReturnType = typeof (UIView), ParameterType = new Type [] { typeof (IntPtr) }, ParameterByRef = new bool [] { false })]
+	[ProtocolMember (IsRequired = false, IsProperty = false, IsStatic = false, Name = "PlayerViewDidBecomeReady", Selector = "playerViewDidBecomeReady:", ParameterType = new Type [] { typeof (NativeLibrary.YTPlayerView) }, ParameterByRef = new bool [] { false })]
+	[ProtocolMember (IsRequired = false, IsProperty = false, IsStatic = false, Name = "PlayerViewDidChangeToState", Selector = "playerView:didChangeToState:", ParameterType = new Type [] { typeof (NativeLibrary.YTPlayerView), typeof (NativeLibrary.YTPlayerState) }, ParameterByRef = new bool [] { false, false })]
+	[ProtocolMember (IsRequired = false, IsProperty = false, IsStatic = false, Name = "PlayerViewDidChangeToQuality", Selector = "playerView:didChangeToQuality:", ParameterType = new Type [] { typeof (NativeLibrary.YTPlayerView), typeof (NativeLibrary.YTPlaybackQuality) }, ParameterByRef = new bool [] { false, false })]
+	[ProtocolMember (IsRequired = false, IsProperty = false, IsStatic = false, Name = "PlayerViewReceivedError", Selector = "playerView:receivedError:", ParameterType = new Type [] { typeof (NativeLibrary.YTPlayerView), typeof (NativeLibrary.YTPlayerError) }, ParameterByRef = new bool [] { false, false })]
+	[ProtocolMember (IsRequired = false, IsProperty = false, IsStatic = false, Name = "PlayerViewDidPlayTime", Selector = "playerView:didPlayTime:", ParameterType = new Type [] { typeof (NativeLibrary.YTPlayerView), typeof (float) }, ParameterByRef = new bool [] { false, false })]
+	[ProtocolMember (IsRequired = false, IsProperty = false, IsStatic = false, Name = "PlayerViewPreferredWebViewBackgroundColor", Selector = "playerViewPreferredWebViewBackgroundColor:", ReturnType = typeof (UIColor), ParameterType = new Type [] { typeof (NativeLibrary.YTPlayerView) }, ParameterByRef = new bool [] { false })]
+	[ProtocolMember (IsRequired = false, IsProperty = false, IsStatic = false, Name = "PlayerViewPreferredInitialLoadingView", Selector = "playerViewPreferredInitialLoadingView:", ReturnType = typeof (UIView), ParameterType = new Type [] { typeof (NativeLibrary.YTPlayerView) }, ParameterByRef = new bool [] { false })]
 	public interface IYTPlayerViewDelegate : INativeObject, IDisposable
 	{
 	}
 	
 	public static partial class YTPlayerViewDelegate_Extensions {
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public static void PlayerViewDidBecomeReady (this IYTPlayerViewDelegate This, global::System.IntPtr playerView)
+		public static void PlayerViewDidBecomeReady (this IYTPlayerViewDelegate This, YTPlayerView playerView)
 		{
-			global::ApiDefinition.Messaging.void_objc_msgSend_IntPtr (This.Handle, Selector.GetHandle ("playerViewDidBecomeReady:"), playerView);
+			if (playerView == null)
+				throw new ArgumentNullException ("playerView");
+			global::ApiDefinition.Messaging.void_objc_msgSend_IntPtr (This.Handle, Selector.GetHandle ("playerViewDidBecomeReady:"), playerView.Handle);
 		}
 		
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public static void PlayerViewDidChangeToState (this IYTPlayerViewDelegate This, global::System.IntPtr playerView, YTPlayerState state)
+		public static void PlayerViewDidChangeToState (this IYTPlayerViewDelegate This, YTPlayerView playerView, YTPlayerState state)
 		{
-			global::ApiDefinition.Messaging.void_objc_msgSend_IntPtr_int (This.Handle, Selector.GetHandle ("playerView:didChangeToState:"), playerView, (int)state);
+			if (playerView == null)
+				throw new ArgumentNullException ("playerView");
+			global::ApiDefinition.Messaging.void_objc_msgSend_IntPtr_int (This.Handle, Selector.GetHandle ("playerView:didChangeToState:"), playerView.Handle, (int)state);
 		}
 		
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public static void PlayerViewDidChangeToQuality (this IYTPlayerViewDelegate This, global::System.IntPtr playerView, YTPlaybackQuality quality)
+		public static void PlayerViewDidChangeToQuality (this IYTPlayerViewDelegate This, YTPlayerView playerView, YTPlaybackQuality quality)
 		{
-			global::ApiDefinition.Messaging.void_objc_msgSend_IntPtr_int (This.Handle, Selector.GetHandle ("playerView:didChangeToQuality:"), playerView, (int)quality);
+			if (playerView == null)
+				throw new ArgumentNullException ("playerView");
+			global::ApiDefinition.Messaging.void_objc_msgSend_IntPtr_int (This.Handle, Selector.GetHandle ("playerView:didChangeToQuality:"), playerView.Handle, (int)quality);
 		}
 		
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public static void PlayerViewReceivedError (this IYTPlayerViewDelegate This, global::System.IntPtr playerView, YTPlayerError error)
+		public static void PlayerViewReceivedError (this IYTPlayerViewDelegate This, YTPlayerView playerView, YTPlayerError error)
 		{
-			global::ApiDefinition.Messaging.void_objc_msgSend_IntPtr_int (This.Handle, Selector.GetHandle ("playerView:receivedError:"), playerView, (int)error);
+			if (playerView == null)
+				throw new ArgumentNullException ("playerView");
+			global::ApiDefinition.Messaging.void_objc_msgSend_IntPtr_int (This.Handle, Selector.GetHandle ("playerView:receivedError:"), playerView.Handle, (int)error);
 		}
 		
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public static void PlayerViewDidPlayTime (this IYTPlayerViewDelegate This, global::System.IntPtr playerView, float playTime)
+		public static void PlayerViewDidPlayTime (this IYTPlayerViewDelegate This, YTPlayerView playerView, float playTime)
 		{
-			global::ApiDefinition.Messaging.void_objc_msgSend_IntPtr_float (This.Handle, Selector.GetHandle ("playerView:didPlayTime:"), playerView, playTime);
+			if (playerView == null)
+				throw new ArgumentNullException ("playerView");
+			global::ApiDefinition.Messaging.void_objc_msgSend_IntPtr_float (This.Handle, Selector.GetHandle ("playerView:didPlayTime:"), playerView.Handle, playTime);
 		}
 		
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public static void PlayerViewPreferredWebViewBackgroundColor (this IYTPlayerViewDelegate This, global::System.IntPtr playerView)
+		public static global::UIKit.UIColor PlayerViewPreferredWebViewBackgroundColor (this IYTPlayerViewDelegate This, YTPlayerView playerView)
 		{
-			global::ApiDefinition.Messaging.void_objc_msgSend_IntPtr (This.Handle, Selector.GetHandle ("playerViewPreferredWebViewBackgroundColor:"), playerView);
+			if (playerView == null)
+				throw new ArgumentNullException ("playerView");
+			return  Runtime.GetNSObject<global::UIKit.UIColor> (global::ApiDefinition.Messaging.IntPtr_objc_msgSend_IntPtr (This.Handle, Selector.GetHandle ("playerViewPreferredWebViewBackgroundColor:"), playerView.Handle));
 		}
 		
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public static global::UIKit.UIView PlayerViewPreferredInitialLoadingView (this IYTPlayerViewDelegate This, global::System.IntPtr playerView)
+		public static global::UIKit.UIView PlayerViewPreferredInitialLoadingView (this IYTPlayerViewDelegate This, YTPlayerView playerView)
 		{
-			return  Runtime.GetNSObject<global::UIKit.UIView> (global::ApiDefinition.Messaging.IntPtr_objc_msgSend_IntPtr (This.Handle, Selector.GetHandle ("playerViewPreferredInitialLoadingView:"), playerView));
+			if (playerView == null)
+				throw new ArgumentNullException ("playerView");
+			return  Runtime.GetNSObject<global::UIKit.UIView> (global::ApiDefinition.Messaging.IntPtr_objc_msgSend_IntPtr (This.Handle, Selector.GetHandle ("playerViewPreferredInitialLoadingView:"), playerView.Handle));
 		}
 		
 	}
@@ -140,49 +154,49 @@ namespace NativeLibrary {
 
 		[Export ("playerViewDidBecomeReady:")]
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public virtual void PlayerViewDidBecomeReady (global::System.IntPtr playerView)
+		public virtual void PlayerViewDidBecomeReady (YTPlayerView playerView)
 		{
 			throw new You_Should_Not_Call_base_In_This_Method ();
 		}
 		
 		[Export ("playerView:didChangeToQuality:")]
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public virtual void PlayerViewDidChangeToQuality (global::System.IntPtr playerView, YTPlaybackQuality quality)
+		public virtual void PlayerViewDidChangeToQuality (YTPlayerView playerView, YTPlaybackQuality quality)
 		{
 			throw new You_Should_Not_Call_base_In_This_Method ();
 		}
 		
 		[Export ("playerView:didChangeToState:")]
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public virtual void PlayerViewDidChangeToState (global::System.IntPtr playerView, YTPlayerState state)
+		public virtual void PlayerViewDidChangeToState (YTPlayerView playerView, YTPlayerState state)
 		{
 			throw new You_Should_Not_Call_base_In_This_Method ();
 		}
 		
 		[Export ("playerView:didPlayTime:")]
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public virtual void PlayerViewDidPlayTime (global::System.IntPtr playerView, float playTime)
+		public virtual void PlayerViewDidPlayTime (YTPlayerView playerView, float playTime)
 		{
 			throw new You_Should_Not_Call_base_In_This_Method ();
 		}
 		
 		[Export ("playerViewPreferredInitialLoadingView:")]
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public virtual global::UIKit.UIView PlayerViewPreferredInitialLoadingView (global::System.IntPtr playerView)
+		public virtual global::UIKit.UIView PlayerViewPreferredInitialLoadingView (YTPlayerView playerView)
 		{
 			throw new You_Should_Not_Call_base_In_This_Method ();
 		}
 		
 		[Export ("playerViewPreferredWebViewBackgroundColor:")]
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public virtual void PlayerViewPreferredWebViewBackgroundColor (global::System.IntPtr playerView)
+		public virtual global::UIKit.UIColor PlayerViewPreferredWebViewBackgroundColor (YTPlayerView playerView)
 		{
 			throw new You_Should_Not_Call_base_In_This_Method ();
 		}
 		
 		[Export ("playerView:receivedError:")]
 		[BindingImpl (BindingImplOptions.GeneratedCode | BindingImplOptions.Optimizable)]
-		public virtual void PlayerViewReceivedError (global::System.IntPtr playerView, YTPlayerError error)
+		public virtual void PlayerViewReceivedError (YTPlayerView playerView, YTPlayerError error)
 		{
 			throw new You_Should_Not_Call_base_In_This_Method ();
 		}

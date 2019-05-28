@@ -61,13 +61,13 @@ namespace ApiDefinition {
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSendSuper")]
 		public extern static void void_objc_msgSendSuper_IntPtr (IntPtr receiver, IntPtr selector, IntPtr arg1);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]
-		public extern static bool bool_objc_msgSend_IntPtr (IntPtr receiver, IntPtr selector, global::System.IntPtr arg1);
+		public extern static bool bool_objc_msgSend_IntPtr (IntPtr receiver, IntPtr selector, IntPtr arg1);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSendSuper")]
-		public extern static bool bool_objc_msgSendSuper_IntPtr (IntPtr receiver, IntPtr selector, global::System.IntPtr arg1);
+		public extern static bool bool_objc_msgSendSuper_IntPtr (IntPtr receiver, IntPtr selector, IntPtr arg1);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]
-		public extern static bool bool_objc_msgSend_IntPtr_IntPtr (IntPtr receiver, IntPtr selector, global::System.IntPtr arg1, global::System.IntPtr arg2);
+		public extern static bool bool_objc_msgSend_IntPtr_IntPtr (IntPtr receiver, IntPtr selector, IntPtr arg1, IntPtr arg2);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSendSuper")]
-		public extern static bool bool_objc_msgSendSuper_IntPtr_IntPtr (IntPtr receiver, IntPtr selector, global::System.IntPtr arg1, global::System.IntPtr arg2);
+		public extern static bool bool_objc_msgSendSuper_IntPtr_IntPtr (IntPtr receiver, IntPtr selector, IntPtr arg1, IntPtr arg2);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]
 		public extern static void void_objc_msgSend (IntPtr receiver, IntPtr selector);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSendSuper")]
@@ -77,17 +77,17 @@ namespace ApiDefinition {
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSendSuper")]
 		public extern static void void_objc_msgSendSuper_float_bool (IntPtr receiver, IntPtr selector, float arg1, bool arg2);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]
-		public extern static void void_objc_msgSend_IntPtr_float_int (IntPtr receiver, IntPtr selector, global::System.IntPtr arg1, float arg2, int arg3);
+		public extern static void void_objc_msgSend_IntPtr_float_int (IntPtr receiver, IntPtr selector, IntPtr arg1, float arg2, int arg3);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSendSuper")]
-		public extern static void void_objc_msgSendSuper_IntPtr_float_int (IntPtr receiver, IntPtr selector, global::System.IntPtr arg1, float arg2, int arg3);
+		public extern static void void_objc_msgSendSuper_IntPtr_float_int (IntPtr receiver, IntPtr selector, IntPtr arg1, float arg2, int arg3);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]
-		public extern static void void_objc_msgSend_IntPtr_float_float_int (IntPtr receiver, IntPtr selector, global::System.IntPtr arg1, float arg2, float arg3, int arg4);
+		public extern static void void_objc_msgSend_IntPtr_float_float_int (IntPtr receiver, IntPtr selector, IntPtr arg1, float arg2, float arg3, int arg4);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSendSuper")]
-		public extern static void void_objc_msgSendSuper_IntPtr_float_float_int (IntPtr receiver, IntPtr selector, global::System.IntPtr arg1, float arg2, float arg3, int arg4);
+		public extern static void void_objc_msgSendSuper_IntPtr_float_float_int (IntPtr receiver, IntPtr selector, IntPtr arg1, float arg2, float arg3, int arg4);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]
-		public extern static void void_objc_msgSend_IntPtr_int_float_int (IntPtr receiver, IntPtr selector, global::System.IntPtr arg1, int arg2, float arg3, int arg4);
+		public extern static void void_objc_msgSend_IntPtr_int_float_int (IntPtr receiver, IntPtr selector, IntPtr arg1, int arg2, float arg3, int arg4);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSendSuper")]
-		public extern static void void_objc_msgSendSuper_IntPtr_int_float_int (IntPtr receiver, IntPtr selector, global::System.IntPtr arg1, int arg2, float arg3, int arg4);
+		public extern static void void_objc_msgSendSuper_IntPtr_int_float_int (IntPtr receiver, IntPtr selector, IntPtr arg1, int arg2, float arg3, int arg4);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]
 		public extern static void void_objc_msgSend_int (IntPtr receiver, IntPtr selector, int arg1);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSendSuper")]
@@ -113,12 +113,16 @@ namespace ApiDefinition {
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSendSuper")]
 		public extern static double Double_objc_msgSendSuper (IntPtr receiver, IntPtr selector);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]
-		public extern static void void_objc_msgSend_IntPtr_int (IntPtr receiver, IntPtr selector, global::System.IntPtr arg1, int arg2);
+		public extern static nint nint_objc_msgSend (IntPtr receiver, IntPtr selector);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSendSuper")]
-		public extern static void void_objc_msgSendSuper_IntPtr_int (IntPtr receiver, IntPtr selector, global::System.IntPtr arg1, int arg2);
+		public extern static nint nint_objc_msgSendSuper (IntPtr receiver, IntPtr selector);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]
-		public extern static void void_objc_msgSend_IntPtr_float (IntPtr receiver, IntPtr selector, global::System.IntPtr arg1, float arg2);
+		public extern static void void_objc_msgSend_IntPtr_int (IntPtr receiver, IntPtr selector, IntPtr arg1, int arg2);
 		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSendSuper")]
-		public extern static void void_objc_msgSendSuper_IntPtr_float (IntPtr receiver, IntPtr selector, global::System.IntPtr arg1, float arg2);
+		public extern static void void_objc_msgSendSuper_IntPtr_int (IntPtr receiver, IntPtr selector, IntPtr arg1, int arg2);
+		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSend")]
+		public extern static void void_objc_msgSend_IntPtr_float (IntPtr receiver, IntPtr selector, IntPtr arg1, float arg2);
+		[DllImport (LIBOBJC_DYLIB, EntryPoint="objc_msgSendSuper")]
+		public extern static void void_objc_msgSendSuper_IntPtr_float (IntPtr receiver, IntPtr selector, IntPtr arg1, float arg2);
 	}
 }

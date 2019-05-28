@@ -1,9 +1,10 @@
 ﻿<Properties>
-  <MonoDevelop.Ide.Workbench ActiveDocument="ExampleBinding/ApiDefinition.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="ExampleBinding/obj/Debug/ios/NativeLibrary/YTPlayerView.g.cs">
     <Files>
-      <File FileName="ExampleBinding/ApiDefinition.cs" Line="213" Column="1" />
-      <File FileName="ExampleBinding/Structs.cs" Line="31" Column="7" />
-      <File FileName="../../Downloads/youtube-ios-player-helper-master/Classes/YTPlayerView.h" Line="635" Column="24" NotebookId="1" />
+      <File FileName="ExampleBinding/ApiDefinition.cs" Line="193" Column="13" />
+      <File FileName="ExampleBinding/Structs.cs" Line="3" Column="18" />
+      <File FileName="ExampleBinding/obj/Debug/ios/NativeLibrary/YTPlayerView.g.cs" Line="101" Column="12" />
+      <File FileName="../../Downloads/youtube-ios-player-helper-master/Classes/YTPlayerView.h" Line="143" Column="48" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

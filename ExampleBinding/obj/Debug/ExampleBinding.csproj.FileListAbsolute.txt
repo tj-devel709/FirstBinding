@@ -1,2 +1,6 @@
-/Users/tjlambert/Projects/ExampleBinding/ExampleBinding/obj/Debug/ExampleBinding.csprojAssemblyReference.cache
 /Users/tjlambert/Projects/ExampleBinding/ExampleBinding/obj/Debug/ExampleBinding.csproj.CoreCompileInputs.cache
+/Users/tjlambert/Projects/ExampleBinding/ExampleBinding/obj/Debug/ExampleBinding.csprojAssemblyReference.cache
+/Users/tjlambert/Projects/ExampleBinding/ExampleBinding/bin/Debug/NativeLibrary.dll
+/Users/tjlambert/Projects/ExampleBinding/ExampleBinding/bin/Debug/NativeLibrary.pdb
+/Users/tjlambert/Projects/ExampleBinding/ExampleBinding/obj/Debug/NativeLibrary.dll
+/Users/tjlambert/Projects/ExampleBinding/ExampleBinding/obj/Debug/NativeLibrary.pdb
